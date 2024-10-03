@@ -1,7 +1,22 @@
 import { expect, it } from "vitest";
 
 const createCache = () => {
-  const cache = {};
+  /**
+   * Record is a JS feature
+   * Record broken out is basically:
+   * cache: {
+   *    [index: string]: string;
+   * }
+   * 
+   * We can also use an interface
+   * interface Cache {
+   *    [id: string]: string
+   * }
+   * 
+   * Any alternative works, but Record<> is easiest to understand
+   * and leverages JS features
+   */
+  const cache: Record<string, string> = {};
 
   const add = (id: string, value: string) => {
     cache[id] = value;
