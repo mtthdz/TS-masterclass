@@ -10,11 +10,19 @@ interface Post {
   body: string;
 }
 
+// we could combine the return obj like so:
+// interface UserPosts extends User {
+//   posts: Post[]
+// }
+
 /**
  * How do we type this return statement so it's both
  * User AND { posts: Post[] }
+ * 
+ * Solution: not my favourite, it's not logically expansive. But it is
+ * a notable alternative to extending an interface
  */
-export const getDefaultUserAndPosts = (): unknown => {
+export const getDefaultUserAndPosts = (): User & { posts: Post[] } => {
   return {
     id: "1",
     firstName: "Matt",

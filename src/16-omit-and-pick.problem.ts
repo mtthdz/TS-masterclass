@@ -11,6 +11,8 @@ interface User {
  * firstName and lastName properties of User?
  */
 
-type MyType = unknown;
+// can only be used into types from interfaces
+// Omit doesn't autocomplete but pick does, this is a problem we'll eventually tackle
+type MyType = Omit<User, 'id'>;
 
 type tests = [Expect<Equal<MyType, { firstName: string; lastName: string }>>];
